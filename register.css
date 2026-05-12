@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  form {
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="file"], input[type="tel"], select {
+    width: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+  }
+  .gender-options, .terms {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  .gender-options label {
+    margin: 0;
+  }
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  button {
+    grid-column: 1 / -1;
+    padding: 10px;
+    background-color: #0078d7;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #005fa3;
+  }

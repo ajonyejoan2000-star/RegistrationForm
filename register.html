@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Registration Form</title>
+<link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <form id="regForm" novalidate>
+    <div>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" />
+      <div class="error" id="nameError"></div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" />
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+      <div class="error" id="passwordError"></div>
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" />
+      <div class="error" id="confirmPasswordError"></div>
+    </div>
+
+    <div>
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" />
+      <div class="error" id="mobileError"></div>
+    </div>
+
+    <div>
+      <label for="language">Language</label>
+      <select id="language" name="language">
+        <option value="">--Select--</option>
+        <option value="english">English</option>
+        <option value="spanish">Spanish</option>
+        <option value="mandarin">Mandarin</option>
+        <option value="french">French</option>
+      </select>
+      <div class="error" id="languageError"></div>
+    </div>
+
+    <div>
+      <label for="attachment">Attachment</label>
+      <input type="file" id="attachment" name="attachment" />
+      <div class="error" id="attachmentError"></div>
+    </div>
+
+    <div>
+      <label>Gender</label>
+      <div class="gender-options">
+        <label><input type="radio" name="gender" value="male" /> Male</label>
+        <label><input type="radio" name="gender" value="female" /> Female</label>
+        <label><input type="radio" name="gender" value="other" /> Other</label>
+      </div>
+      <div class="error" id="genderError"></div>
+    </div>
+
+    <div class="terms full-width">
+      <label><input type="checkbox" id="terms" /> I accept the terms of use</label>
+      <div class="error" id="termsError"></div>
+    </div>
+
+    <button type="submit">Register Now</button>
+  </form>
+
+<script>
+  const form = document.getElementById('regForm');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Clear errors
+    const errors = document.querySelectorAll('.error');
+    errors.forEach(error => error.textContent = '');
+
+    let valid = true;
+
+    // Name validation
+    const name = form.name.value.trim();
+    if (name === '') {
+      valid = false;
+      document.getElementById('nameError').textContent = 'Please enter your full name.';
+    }
+
+    // Email validation
+    const email = form.email.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === '') {
+      valid = false;
+      document.getElementById('emailError').textContent = 'Please enter your email.';
+    } else if (!emailPattern.test(email)) {
+      valid = false;
+      document.getElementById('emailError').textContent = 'Please enter a valid email.';
+    }
+
+    // Password validation
+    const password = form.password.value;
+    if (password === '') {
+      valid = false;
+      document.getElementById('passwordError').textContent = 'Please enter a password.';
+    } else if (password.length < 6) {
+      valid = false;
+      document.getElementById('passwordError').textContent = 'Password must be at least 6 characters.';
+    }
+
+    // Confirm Password validation
+    const confirmPassword = form.confirmPassword.value;
+    if (confirmPassword === '') {
+      valid = false;
+      document.getElementById('confirmPasswordError').textContent = 'Please confirm your password.';
+    } else if (password !== confirmPassword) {
+      valid = false;
+      document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+    }
+
+    // Mobile validation (simple digits check)
+    const mobile = form.mobile.value.trim();
+    const mobilePattern = /^[0-9]{10,15}$/;
+    if (mobile === '') {
+      valid = false;
+      document.getElementById('mobileError').textContent = 'Please enter your mobile number.';
+    } else if (!mobilePattern.test(mobile)) {
+      valid = false;
+      document.getElementById('mobileError').textContent = 'Enter a valid mobile number (10-15 digits).';
+    }
+
+    // Language validation
+    const language = form.language.value;
+    if (language === '') {
+      valid = false;
+      document.getElementById('languageError').textContent = 'Please select a language.';
+    }
+
+    // Attachment validation
+    const attachment = form.attachment.value;
+    if (attachment === '') {
+      valid = false;
+      document.getElementById('attachmentError').textContent = 'Please upload an attachment.';
+    }
+
+    // Gender validation
+    const gender = form.gender.value;
+    if (!gender) {
+      valid = false;
+      document.getElementById('genderError').textContent = 'Please select your gender.';
+    }
+
+    // Terms validation
+    const terms = form.terms.checked;
+    if (!terms) {
+      valid = false;
+      document.getElementById('termsError').textContent = 'You must accept the terms of use.';
+    }
+
+    if (valid) {
+      alert('Registration successful!');
+      form.reset();
+    }
+  });
+</script>
+</body>
+</html>
