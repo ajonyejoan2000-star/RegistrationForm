@@ -1,9 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
+    background-image: linear-gradient(to right rgb(112, 95, 72), rgb(214, 113, 113));
+  }
+  .wrapper{
+    background-color: #03121d;
+    backdrop-filter: blur(40px);
+    border: 1px solid;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.064);
+    border-radius: 10px;
+    color: white;
+    padding: 40px 35px 55px;
+    margin: 0 150px;
+  }
+  h1{
+    text-align: center;
   }
   form {
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
