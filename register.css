@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-image: linear-gradient(to right rgb(112, 95, 72), rgb(214, 113, 113));
+    background-color:rgba(142, 141, 155, 0.986);
   }
   .wrapper{
-    background-color: #03121d;
+    background-color: #081a25;
     backdrop-filter: blur(40px);
     border: 1px solid;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.064);
@@ -50,7 +50,7 @@ body {
   button {
     grid-column: 1 / -1;
     padding: 10px;
-    background-color: #0078d7;
+    background-color: #00d748;
     border: none;
     color: white;
     font-size: 1em;
